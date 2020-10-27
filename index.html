@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+   	    <!-- Compiled and minified CSS -->
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+	    <!-- Compiled and minified JavaScript -->
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <meta charset="utf-8">
+        <title> Regiao Entre Curvas De Bezier </title>
+        <link type="text/css" rel="stylesheet" href="style.css">    
+    </head>
+    <body>
+    	<a class="waves-effect waves-light btn" onclick="comCurvachange1()" style="border-radius:40px; margin-left:40px; margin-top:10px;padding-left:10px;background-color:#FDD835; color:#000; text-weight:600;">MOSTRAR PONTOS </a>
+
+    	<a class="waves-effect waves-light btn" onclick="comCurvachange2()" style="border-radius:40px; margin-left:40px; margin-top:10px;padding-left:10px;background-color:#FDD835; color:#000; text-weight:600;">MOSTRAR POLIGONAL </a>
+
+    	<a class="waves-effect waves-light btn" onclick="comCurvachange3()" style="border-radius:40px; margin-left:40px; margin-top:10px;padding-left:10px;background-color:#FDD835; color:#000; text-weight:600;">MOSTRAR CURVA </a>
+
+    	<a class="waves-effect waves-light btn" onclick="AddCurva()" style="border-radius:40px; margin-left:40px; margin-top:10px;padding-left:10px;background-color:#FDD835; color:#000; text-weight:600;">ADICIONAR CURVA </a>
+
+    	<a class="waves-effect waves-light btn" onclick="RemoveCurva()" style="border-radius:40px; margin-left:40px; margin-top:10px;padding-left:10px;background-color:#FDD835; color:#000; text-weight:600;">DELETAR CURVA </a>
+
+    	<a class="waves-effect waves-light btn" onclick="ChangeCurva()" style="border-radius:40px; margin-left:40px; margin-top:10px;padding-left:10px;background-color:#FDD835; color:#000; text-weight:600;">TROCAR CURVA </a>
+
+        <div class="input-field col s6"> <input id="num_avaliacoes" placeholder="Numero de avaliações" type="text" class="validate"> <label for="last_name"></label> </div>
+        
+        <canvas id="canvas" tabindex="1"></canvas>
+    </body>
+    <script src="script.js"></script>
+</html>
+
+
+
