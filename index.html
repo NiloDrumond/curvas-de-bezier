@@ -8,15 +8,25 @@
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <meta charset="utf-8">
-        <title> Regiao Entre Curvas De Bezier </title>
+        <title> Curvas De Bezier </title>
         <link type="text/css" rel="stylesheet" href="style.css">    
     </head>
     <body>
-    	<a class="waves-effect waves-light btn" onclick="comCurvachange1()" style="border-radius:40px; margin-left:40px; margin-top:10px;padding-left:10px;background-color:#FDD835; color:#000; text-weight:600;">MOSTRAR PONTOS </a>
 
-    	<a class="waves-effect waves-light btn" onclick="comCurvachange2()" style="border-radius:40px; margin-left:40px; margin-top:10px;padding-left:10px;background-color:#FDD835; color:#000; text-weight:600;">MOSTRAR POLIGONAL </a>
+        <label class="container">PONTOS
+            <input type="checkbox" onclick="comCurvachange1()" checked="checked">
+            <span class="checkmark"></span>
+        </label>
 
-    	<a class="waves-effect waves-light btn" onclick="comCurvachange3()" style="border-radius:40px; margin-left:40px; margin-top:10px;padding-left:10px;background-color:#FDD835; color:#000; text-weight:600;">MOSTRAR CURVA </a>
+        <label class="container">POLIGONAL
+            <input type="checkbox" onclick="comCurvachange2()" checked="checked">
+            <span class="checkmark"></span>
+        </label>
+
+        <label class="container">CURVA
+            <input type="checkbox" onclick="comCurvachange3()" checked="checked">
+            <span class="checkmark"></span>
+        </label>
 
     	<a class="waves-effect waves-light btn" onclick="AddCurva()" style="border-radius:40px; margin-left:40px; margin-top:10px;padding-left:10px;background-color:#FDD835; color:#000; text-weight:600;">ADICIONAR CURVA </a>
 

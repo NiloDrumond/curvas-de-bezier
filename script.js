@@ -245,7 +245,7 @@ function calcularPontosCurva(curva) {
   }
   drawCurve(pointsCurve, curva);
 
-
+  /*
   var pointsCurveUp = [];
   //para cada avaliacao:
   //var t = 1/2;
@@ -283,7 +283,7 @@ function calcularPontosCurva(curva) {
     pointsCurveDown.push(pointsDeCasteljau[0]);
   }
   drawCurve(pointsCurveDown, curva);
-
+*/
 }
 
 
