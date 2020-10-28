@@ -214,26 +214,9 @@ function drawPoints(curva) {
 
   if(curva.numeroPontos > 2) {
 	  novosPontos(curva);
-	  	if(showPoints === true){
-		  for (var i in curva.pointsUp) {
-		    ctx.beginPath();
-		    // ctx.arc(curva.pointsUp[i].x, curva.pointsUp[i].y, 5, 0, 2 * Math.PI);
-		    // ctx.fillStyle = 'yellow';
-		    // ctx.fill();
-
-		  }
-
-		  for (var i in curva.pointsDown) {
-		    ctx.beginPath();
-		    // ctx.arc(curva.pointsDown[i].x, curva.pointsDown[i].y, 5, 0, 2 * Math.PI);
-		    // ctx.fillStyle = 'black';
-		    // ctx.fill();
-
-		  }
-	}
-	if(showCurve === true){
-	  calcularPontosCurva(curva);
-	}
+    if(showCurve === true){
+      calcularPontosCurva(curva);
+    }
 
 	}
 }
@@ -284,46 +267,6 @@ function calcularPontosCurva(curva) {
     pointsCurve.push(pointsDeCasteljau[0]);
   }
   drawCurve(pointsCurve, curva);
-
-  /*
-  var pointsCurveUp = [];
-  //para cada avaliacao:
-  //var t = 1/2;
-  var t = 0;
-  for(var cont = 0; cont < curva.numeroTestes; t = t + 1/curva.numeroTestes, cont++){
-  	var pointsDeCasteljau = curva.pointsUp.slice(0, curva.numeroPontos + 1);
-    //para cada nivel:
-    for(n = 1; n < curva.numeroPontos; n++) {
-      //para cada ponto:
-      for(p = 0; p < curva.numeroPontos - n; p++) {
-        var cordX = (1 - t) * pointsDeCasteljau[p].x + t * pointsDeCasteljau[p+1].x;
-        var cordY = (1 - t) * pointsDeCasteljau[p].y + t * pointsDeCasteljau[p+1].y;
-        pointsDeCasteljau[p] = {x: cordX, y: cordY};
-      }
-    }
-    pointsCurveUp.push(pointsDeCasteljau[0]);
-  }
-  drawCurve(pointsCurveUp, curva);
-
-  var pointsCurveDown = [];
-  //para cada avaliacao:
-  //var t = 1/2;
-  var t = 0;
-  for(var cont = 0; cont < curva.numeroTestes; t = t + 1/curva.numeroTestes, cont++){
-  	var pointsDeCasteljau = curva.pointsDown.slice(0, curva.numeroPontos + 1);
-    //para cada nivel:
-    for(n = 1; n < curva.numeroPontos; n++) {
-      //para cada ponto:
-      for(p = 0; p < curva.numeroPontos - n; p++) {
-        var cordX = (1 - t) * pointsDeCasteljau[p].x + t * pointsDeCasteljau[p+1].x;
-        var cordY = (1 - t) * pointsDeCasteljau[p].y + t * pointsDeCasteljau[p+1].y;
-        pointsDeCasteljau[p] = {x: cordX, y: cordY};
-      }
-    }
-    pointsCurveDown.push(pointsDeCasteljau[0]);
-  }
-  drawCurve(pointsCurveDown, curva);
-*/
 }
 
 
