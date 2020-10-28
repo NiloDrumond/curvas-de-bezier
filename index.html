@@ -9,33 +9,38 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <meta charset="utf-8">
         <title> Curvas De Bezier </title>
-        <link type="text/css" rel="stylesheet" href="style.css">    
+        <link type="text/css" rel="stylesheet" href="style.css">
     </head>
     <body>
 
-        <label class="container">PONTOS
-            <input type="checkbox" onclick="comCurvachange1()" checked="checked">
-            <span class="checkmark"></span>
-        </label>
+        <div class="head">
+            <div class="left">
+                <label class="container">PONTOS
+                    <input type="checkbox" onclick="togglePoints()" checked="checked">
+                    <span class="checkmark"></span>
+                </label>
 
-        <label class="container">POLIGONAL
-            <input type="checkbox" onclick="comCurvachange2()" checked="checked">
-            <span class="checkmark"></span>
-        </label>
+                <label class="container">POLIGONAL
+                    <input type="checkbox" onclick="togglePoligons()" checked="checked">
+                    <span class="checkmark"></span>
+                </label>
 
-        <label class="container">CURVA
-            <input type="checkbox" onclick="comCurvachange3()" checked="checked">
-            <span class="checkmark"></span>
-        </label>
+                <label class="container">CURVA
+                    <input type="checkbox" onclick="toggleCurve()" checked="checked">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
 
-    	<a class="waves-effect waves-light btn" onclick="AddCurva()" style="border-radius:40px; margin-left:40px; margin-top:10px;padding-left:10px;background-color:#FDD835; color:#000; text-weight:600;">ADICIONAR CURVA </a>
+            <div class="right">
+                <a class="waves-effect waves-light btn" onclick="AddCurva()" >ADICIONAR CURVA </a>
 
-    	<a class="waves-effect waves-light btn" onclick="RemoveCurva()" style="border-radius:40px; margin-left:40px; margin-top:10px;padding-left:10px;background-color:#FDD835; color:#000; text-weight:600;">DELETAR CURVA </a>
+                <a class="waves-effect waves-light btn" onclick="RemoveCurva()" >DELETAR CURVA </a>
 
-    	<a class="waves-effect waves-light btn" onclick="ChangeCurva()" style="border-radius:40px; margin-left:40px; margin-top:10px;padding-left:10px;background-color:#FDD835; color:#000; text-weight:600;">TROCAR CURVA </a>
+                <a class="waves-effect waves-light btn" onclick="ChangeCurva()" >TROCAR CURVA </a>   </div>
+            </div>
 
-        <div class="input-field col s6"> <input id="num_avaliacoes" placeholder="Numero de avaliações" type="text" class="validate"> <label for="last_name"></label> </div>
-        
+        <div class="input-field col s6"> <input id="num_avaliacoes" placeholder="Numero de avaliações" type="text" class="validate"></div>
+
         <canvas id="canvas" tabindex="1"></canvas>
     </body>
     <script src="script.js"></script>

@@ -71,6 +71,7 @@ canvas {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  color: black;
 }
 
 /* Hide the browser's default checkbox */
@@ -99,7 +100,7 @@ canvas {
 
 /* When the checkbox is checked, add a blue background */
 .container input:checked ~ .checkmark {
-  background-color: #2196F3;
+  background-color: #fdc029;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -125,4 +126,51 @@ canvas {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+.head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 20px;
+}
+
+.left {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: 30px;
+}
+
+.left > label {
+  margin-right: 15px;
+}
+
+.right {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30px;
+}
+
+.right > a {
+  border-radius: 40px;
+  margin-left: 40px;
+  margin-top: 10px;
+  padding-left: 10px;
+  background-color: #fdc029;
+  color: #000;
+  display: flex;
+  text-align: center;
+}
+
+#num_avaliacoes::placeholder {
+  color: #a9a9a9;
+}
+
+canvas {
+  display: flex;
+  flex: 1;
 }

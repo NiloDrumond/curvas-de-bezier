@@ -1,3 +1,5 @@
+/* Setup */
+
 const curvaModel = {
   points: [],
   pointsUp: [],
@@ -6,38 +8,55 @@ const curvaModel = {
   espessuraDefault: 50,
   numeroPontos: 0,
   numeroTestes: 100,
-  pontoAtual: -1,   
+  pontoAtual: -1,
 }
 
 var curvas = [{...curvaModel}];
+var index = 0;
+var canvas = document.getElementById('canvas')
+var ctx = canvas.getContext('2d');
+var move = false;
 
-//---------------------Vetor---------------------------------------
+var showPoints = true;
+var showPoligons = true;
+var showCurve = true;
 
-	function normalizar(v1){
-		var vt = {x: v1.x/v1.norma, y: v1.y/v1.norma, norma: 1};
-		return vt;
-	}
 
-	function subtraiVetor(v1, v2){//v1 - v2
-		var newX = v1.x - v2.x;
-		var newY = v1.y - v2.y;
-		var vt = {x: newX, y: newY, norma: Math.sqrt(newX*newX + newY*newY)};
-		return vt;
-	}
+function resizeCanvas() {
+  canvas.width = parseFloat(window.getComputedStyle(canvas).width);
+  canvas.height = parseFloat(window.getComputedStyle(canvas).height);
+}
 
-	function produtoInterno (v1, v2){
-		return ((v1.x * v2.x) + (v1.y + v2.y));
-	}
+resizeCanvas();
 
-	function anguloVetor(v1, v2){//retorna o cosseno do angulo
-		return ( (produtoInterno(v1, v2)) / (v1.norma * v2.norma) );
-	}
-	function ortogonal(v1){//consegue um vetor ortogonal, serah utilizado caso os 3 pontos sejam colineares
-		var vt = {x: vq.y, y: -v1.x, norma: Math.sqrt(v1.y*v1.y + v1.x*vq.x)};
-		return vt;
-	}
+/* Vetor / Utils */
 
-//----------------------------Calculo dos pontos a mais ------------------------------------
+function normalizar(v1){
+  var vt = {x: v1.x/v1.norma, y: v1.y/v1.norma, norma: 1};
+  return vt;
+}
+
+function subtraiVetor(v1, v2){
+  var newX = v1.x - v2.x;
+  var newY = v1.y - v2.y;
+  var vt = {x: newX, y: newY, norma: Math.sqrt(newX*newX + newY*newY)};
+  return vt;
+}
+
+function produtoInterno (v1, v2){
+  return ((v1.x * v2.x) + (v1.y + v2.y));
+}
+
+function anguloVetor(v1, v2){
+  return ( (produtoInterno(v1, v2)) / (v1.norma * v2.norma) );
+}
+function ortogonal(v1){
+  var vt = {x: vq.y, y: -v1.x, norma: Math.sqrt(v1.y*v1.y + v1.x*vq.x)};
+  return vt;
+}
+
+
+/* Calculo dos novos pontos */
 
 var vtPontos;
 
@@ -57,7 +76,7 @@ function novosPontos(curva){
 	curva.pointsUp = [];
 	curva.pointsDown = [];
 	//zerando os dois pontos
-	
+
 	for (var i = 0; i < curva.points.length; i++) {
 		var coordPointsTemp = { x: curva.points[i].x, y: curva.points[i].y};
 		var coordPointsTemp1 = { x: curva.points[i].x, y: curva.points[i].y};
@@ -92,11 +111,9 @@ function novosPontos(curva){
 
 //----------------------Canvas-------------------------------------
 
-var index = 0;
-var canvas = document.getElementById('canvas')
-var ctx = canvas.getContext('2d');
-var move = false;
 
+
+/* Interação */
 
 function AddCurva() {
   curvas.push({...curvaModel, points: [],
@@ -104,7 +121,6 @@ function AddCurva() {
     pointsDown: [],
     vetores: [],});
   index = curvas.length - 1;
-  resizeCanvas();
 }
 
 function RemoveCurva() {
@@ -120,18 +136,35 @@ function ChangeCurva() {
   }
 }
 
+function togglePoints(){
+  if (showPoints===true){
+      showPoints = false;
 
-resizeCanvas();
+  }else if ( showPoints ===false){
+      showPoints = true;
 
-function resizeCanvas() {
-  canvas.width = parseFloat(window.getComputedStyle(canvas).width);
-  canvas.height = parseFloat(window.getComputedStyle(canvas).height);
+  }
 }
 
-$('#num_avaliacoes').on('change',function(event){//Funcao para editar o numero de avaliações
-	curvas[index].numeroTestes = (event.target.value); 
-	drawPoints(curvas[index]);
-})
+function togglePoligons(){
+  if (showPoligons===true){
+    showPoligons = false;
+
+  }else if ( showPoligons ===false){
+      showPoligons = true;
+
+  }
+}
+
+function toggleCurve(){
+  if (showCurve===true){
+      showCurve = false;
+
+  }else if ( showCurve ===false){
+      showCurve = true;
+
+  }
+}
 
 function dist(p1, p2) {
   var v = {x: p1.x - p2.x, y: p1.y - p2.y};
@@ -147,10 +180,13 @@ function getIndex(click) {
   return -1;
 }
 
+
+/* Render */
+
 function drawPoints(curva) {
   //desenha todos os pontos
   for (var i in curva.points) {
-    if(comCurva1 === true){	
+    if(showPoints === true){
 	    ctx.beginPath();
 	    ctx.arc(curva.points[i].x, curva.points[i].y, 5, 0, 2 * Math.PI);
 	    if(i != curva.pontoAtual) {
@@ -162,12 +198,14 @@ function drawPoints(curva) {
     ctx.fill();
 
     //ligando os pontos
-    if(comCurva2 === true){
+    if(showPoligons === true){
 	    if(i > 0){
 	      var xAtual = curva.points[i-1].x;
 	      var yAtual = curva.points[i-1].y;
 	      ctx.moveTo(xAtual, yAtual);
-	      ctx.lineTo(curva.points[i].x, curva.points[i].y);
+        ctx.lineTo(curva.points[i].x, curva.points[i].y);
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 1;
 	      ctx.stroke();
 	    }
 	}
@@ -176,24 +214,24 @@ function drawPoints(curva) {
 
   if(curva.numeroPontos > 2) {
 	  novosPontos(curva);
-	  	if(comCurva1 === true){
+	  	if(showPoints === true){
 		  for (var i in curva.pointsUp) {
 		    ctx.beginPath();
-		    ctx.arc(curva.pointsUp[i].x, curva.pointsUp[i].y, 5, 0, 2 * Math.PI);
-		    ctx.fillStyle = 'yellow';
-		    ctx.fill();
+		    // ctx.arc(curva.pointsUp[i].x, curva.pointsUp[i].y, 5, 0, 2 * Math.PI);
+		    // ctx.fillStyle = 'yellow';
+		    // ctx.fill();
 
 		  }
 
 		  for (var i in curva.pointsDown) {
 		    ctx.beginPath();
-		    ctx.arc(curva.pointsDown[i].x, curva.pointsDown[i].y, 5, 0, 2 * Math.PI);
-		    ctx.fillStyle = 'black';
-		    ctx.fill();
+		    // ctx.arc(curva.pointsDown[i].x, curva.pointsDown[i].y, 5, 0, 2 * Math.PI);
+		    // ctx.fillStyle = 'black';
+		    // ctx.fill();
 
 		  }
 	}
-	if(comCurva3 === true){
+	if(showCurve === true){
 	  calcularPontosCurva(curva);
 	}
 
@@ -202,7 +240,7 @@ function drawPoints(curva) {
 
 setInterval(() => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);//redesenha o canvas
-  for(let j = 0; j < curvas.length; j++) { 
+  for(let j = 0; j < curvas.length; j++) {
     drawPoints(curvas[j]);
   }
 }, 100);
@@ -213,12 +251,14 @@ function drawCurve(pointsCurve, curva) {
   if(curva.numeroPontos > 2) {
     for(var i in pointsCurve) {
       ctx.beginPath();
-      
+
       if(i > 0) {
         var xAtual = pointsCurve[i-1].x;
         var yAtual = pointsCurve[i-1].y;
         ctx.moveTo(xAtual, yAtual);
         ctx.lineTo(pointsCurve[i].x, pointsCurve[i].y);
+        ctx.strokeStyle =  curva === curvas[index] ? "green" : "red";
+        ctx.lineWidth = 3;
         ctx.stroke();
       }
     }
@@ -311,7 +351,7 @@ canvas.addEventListener('mousemove', e => {
     var antigo = curvas[index].points[i];
     curvas[index].points[i] = {x: e.offsetX, y: e.offsetY, e: antigo.e};
     drawPoints(curvas[index]);
-  }     
+  }
 });
 
 canvas.addEventListener('mouseup', e => {
@@ -340,43 +380,10 @@ canvas.addEventListener('mousedown', e => {
     move = true;
     curvas[index].pontoAtual = i;
   }
-  
+
 });
 
-
-var comCurva1 = true;
-function comCurvachange1(){
-    if (comCurva1===true){
-        comCurva1 = false;
-
-    }else if ( comCurva1 ===false){
-        comCurva1 = true;
-
-    } 
-}
-
-
-
-var comCurva2 = true;
-function comCurvachange2(){
-    if (comCurva2===true){
-        comCurva2 = false;
-
-    }else if ( comCurva2 ===false){
-        comCurva2 = true;
-
-    } 
-}
-
-var comCurva3 = true;
-function comCurvachange3(){
-    if (comCurva3===true){
-        comCurva3 = false;
-
-    }else if ( comCurva3 ===false){
-        comCurva3 = true;
-
-    } 
-}
-
-
+$('#num_avaliacoes').on('change',function(event){//Funcao para editar o numero de avaliações
+	curvas[index].numeroTestes = (event.target.value);
+	drawPoints(curvas[index]);
+})
