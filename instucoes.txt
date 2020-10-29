@@ -2,7 +2,7 @@ Instruções de Uso:
 Adicionar pontos de controle:
 	Clicar na tela
 Editar curva:
-	Ao clicar num ponto de controle existente, a cor dele ficar� verde (essa cor indica o ponto atualmente selecionado)
+	Ao clicar num ponto de controle existente, a cor dele ficar verde (essa cor indica o ponto atualmente selecionado)
 	Para mover basta segurar o botão do mouse e arrastar
 	Dois cliques para apagar o ponto
 
