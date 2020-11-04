@@ -4,7 +4,7 @@ body {
   height: 100%;
   padding: 0;
   margin: 0;
-  background: rgb(255, 255, 255);
+  background: #f0f0f0;
 }
 
 canvas {
@@ -13,50 +13,8 @@ canvas {
   position: absolute;
   padding: 0;
   margin: 0;
-  background: rgb(255, 255, 255, 0);
-}
-
-#slidecontainer {
-  width: 100%; /* Width of the outside container */
-}
-
-/* The slider itself */
-.slider {
-  -webkit-appearance: none; /* Override default CSS styles */
-  appearance: none;
-  width: 50%; /* Full-width */
-  height: 15px; /* Specified height */
-  background: #d3d3d3; /* Grey background */
-  height: 5px;
-  border-radius: 5px;
-  outline: none; /* Remove outline */
-  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
-  transition: opacity 0.2s;
-}
-
-/* Mouse-over effects */
-.slider:hover {
-  opacity: 1; /* Fully shown on mouse-over */
-}
-
-/* The slider handle (use webkit (Chrome, Opera, Safari, Edge) and moz (Firefox) to override default look) */
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
-  appearance: none;
-  width: 15px; /* Set a specific slider handle width */
-  height: 15px; /* Slider handle height */
-  border-radius: 50%;
-  background: #4caf50; /* Green background */
-  cursor: pointer; /* Cursor on hover */
-}
-
-.slider::-moz-range-thumb {
-  width: 25px; /* Set a specific slider handle width */
-  height: 25px; /* Slider handle height */
-  border-radius: 50%;
-  background: #4caf50; /* Green background */
-  cursor: pointer; /* Cursor on hover */
+  background: #bbe3ed;
+  border: 0px none black;
 }
 
 /*CHECKBOX*/
@@ -91,6 +49,8 @@ canvas {
   height: 25px;
   width: 25px;
   background-color: #eee;
+  border: solid #364f6b 2px;
+  border-radius: 5px;
 }
 
 /* On mouse-over, add a grey background color */
@@ -100,7 +60,7 @@ canvas {
 
 /* When the checkbox is checked, add a blue background */
 .container input:checked ~ .checkmark {
-  background-color: #fdc029;
+  background-color: #fc5185;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -160,7 +120,7 @@ canvas {
   margin-left: 40px;
   margin-top: 10px;
   padding-left: 10px;
-  background-color: #fdc029;
+  background-color: #fc5185;
   color: #000;
   display: flex;
   text-align: center;

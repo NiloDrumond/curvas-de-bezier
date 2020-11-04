@@ -184,31 +184,28 @@ function getIndex(click) {
 /* Render */
 
 function drawPoints(curva) {
-  //desenha todos os pontos
+  //desenha os pontos
   for (var i in curva.points) {
     if(showPoints === true){
 	    ctx.beginPath();
-	    ctx.arc(curva.points[i].x, curva.points[i].y, 5, 0, 2 * Math.PI);
-	    if(i != curva.pontoAtual) {
-		    ctx.fillStyle = 'red';
-	    } else {
-		    ctx.fillStyle = 'green';
-		}
-	}
+	    ctx.arc(curva.points[i].x, curva.points[i].y, 6, 0, 2 * Math.PI);
+		  ctx.fillStyle = 'purple';
+	  }
     ctx.fill();
 
-    //ligando os pontos
+  // desenha os poligonos
     if(showPoligons === true){
-	    if(i > 0){
-	      var xAtual = curva.points[i-1].x;
-	      var yAtual = curva.points[i-1].y;
-	      ctx.moveTo(xAtual, yAtual);
+      if(i > 0){
+        ctx.beginPath();
+        var xAtual = curva.points[i-1].x;
+        var yAtual = curva.points[i-1].y;
+        ctx.moveTo(xAtual, yAtual);
         ctx.lineTo(curva.points[i].x, curva.points[i].y);
         ctx.strokeStyle = "black";
         ctx.lineWidth = 1;
-	      ctx.stroke();
-	    }
-	}
+        ctx.stroke();
+      }
+    }
 
   }
 
