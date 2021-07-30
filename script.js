@@ -123,7 +123,7 @@ function drawPoints(curva) {
     if (showPoints) {
       ctx.beginPath();
       ctx.arc(curva.points[i].x, curva.points[i].y, 6, 0, 2 * Math.PI);
-      ctx.fillStyle = "purple";
+      ctx.fillStyle = "#F3F3F3";
     }
     ctx.fill();
 
@@ -135,7 +135,7 @@ function drawPoints(curva) {
         var yAtual = curva.points[i - 1].y;
         ctx.moveTo(xAtual, yAtual);
         ctx.lineTo(curva.points[i].x, curva.points[i].y);
-        ctx.strokeStyle = "black";
+        ctx.strokeStyle = "white";
         ctx.lineWidth = 1;
         ctx.stroke();
       }
@@ -166,7 +166,7 @@ function drawCurve(pointsCurve, curva) {
         var yAtual = pointsCurve[i - 1].y;
         ctx.moveTo(xAtual, yAtual);
         ctx.lineTo(pointsCurve[i].x, pointsCurve[i].y);
-        ctx.strokeStyle = curva === curvas[index] ? "green" : "red";
+        ctx.strokeStyle = curva === curvas[index] ? "#50a669" : "#a65050";
         ctx.lineWidth = 3;
         ctx.stroke();
       }
