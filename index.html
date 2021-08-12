@@ -12,12 +12,36 @@
         <div class="menu">
             <div>
                 <label class="container">
-                    PONTOS
+                    PONTOS DE CONTROLE <br>
+                    BÉZIER
+                    <input type="checkbox" onclick="togglePointsBezier()" checked="checked">
+                </label>
+            </div>
+
+            <div>
+                <label class="container">
+                    PONTOS DE CONTROLE <br>
+                    B-SPLINE
                     <input type="checkbox" onclick="togglePoints()" checked="checked">
                 </label>
             </div>
 
             <div>
+                <label class="container">
+                    POLIGONAIS B-SPLINE
+                    <input type="checkbox" onclick="togglePolygonal()" checked="checked">
+                </label>
+            </div>
+
+            <div>
+                <label class="container">
+                    CURVA
+                    B-SPLINE
+                    <input type="checkbox" onclick="toggleCurve()" checked="checked">
+                </label>
+            </div>
+
+            <!-- <div>
                 <label class="container">
                     POLIGONAL
                     <input type="checkbox" onclick="togglePoligons()" checked="checked">
@@ -29,19 +53,19 @@
                     CURVA
                     <input type="checkbox" onclick="toggleCurve()" checked="checked">
                 </label>
-            </div>
+            </div> -->
 
-            <button class="btn-button" onclick="AddCurva()">
+            <!-- <button class="btn-button" onclick="AddCurva()">
                 ADICIONAR CURVA 
-            </button>
+            </button> -->
 
             <button class="btn-button" onclick="RemoveCurva()">
                 REMOVER CURVA 
             </button>
 
-            <button class="btn-button" onclick="ChangeCurva()">
+            <!-- <button class="btn-button" onclick="ChangeCurva()">
                 TROCAR CURVA 
-            </button>
+            </button> -->
 
             <div class="input-field col s6"> <input id="num_avaliacoes" placeholder="Numero de avaliações" type="text" class="validate"></div>
         </div>
